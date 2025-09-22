@@ -1,6 +1,5 @@
-
 # 🔎 kubernetes namespace yaml
-
+# labels are used for filteration purpose 
 apiVersion: v1
 kind: Namespace
 metadata:
