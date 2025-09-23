@@ -1,7 +1,6 @@
 # Kubernetes Resource Limiting
 
 A simple guide to understand **Resource Limiting** in Kubernetes.  
-Includes **theory + example YAML + container vs VM comparison**.
 
 ---
 
