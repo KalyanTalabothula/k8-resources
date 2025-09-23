@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: pod
+metadata:
+  name: labels
+  labels:     # ela labels lo chala rayachhu, manaki filtering lo use avutmdhi..
+    project: roboshop
+    component: mysql
+    tier: backend
+    environment: dev
+spec:
+  container: 
+  - name: nginx
+    image: nginx
