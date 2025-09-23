@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pod-Config 
+  labels: 
+    purpose: Config
+    env: dev
+data: 
+  COURSE: "DevOps with AWS"
+  DURATION: "120+ hours"
+  TRAINER: "Sir"
+
+# case anedi mana istam lower or UPPER anything is fine. 
