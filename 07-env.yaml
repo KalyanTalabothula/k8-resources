@@ -1,0 +1,17 @@
+# 🔍 kubernetes pod env 
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: envar-demo
+  labels:
+    purpose: demonstrate-envars
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    env:
+    - name: COURSE
+      value: "kubernetes"   # --> " " double qutations in value 
+    - name: TRAINER
+      value: "KALYAN"
