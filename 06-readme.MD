@@ -40,10 +40,10 @@ spec:
   containers:
   - name: app
     image: nginx
-    resources:
+    resources:  # --> soft limit
       requests:
         cpu: "200m"      # 0.2 CPU
         memory: "256Mi"  # 256 MB RAM
-      limits:
+      limits: # --> hard limit
         cpu: "500m"      # 0.5 CPU
         memory: "512Mi"  # 512 MB RAM
