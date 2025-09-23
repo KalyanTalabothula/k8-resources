@@ -7,3 +7,6 @@ metadata:
   labels:
     project: roboshop
     environment: dev
+
+# If you don’t specify metadata.name in the Pod YAML:
+# ✅ Correct answer: B) Kubernetes will auto-generate a random Pod name
