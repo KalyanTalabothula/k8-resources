@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod # A pod has 1 or multiple container 
+metadata:
+  name: multi-container
+  labels: # mandotory kadu but chala important evvatam.
+    project: roboshop
+    Purpose: multi-container-demo
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+  - name: almalinux
+    image: almalinux:9 
