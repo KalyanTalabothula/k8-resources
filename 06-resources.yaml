@@ -1,1 +1,19 @@
 # 🔍 kubernetes resources limiting
+
+apiVersion: v1
+kind: Pod 
+metadata:
+  name: resources
+spec: 
+  containers:
+  - name: nginx
+    images: nginx
+    resources:    # --> soft limit
+      requests:
+        cpu: "100m"      
+        memory: "68Mi"  
+      limits:     # --> hard limit
+        cpu: "150m"      # 0.5 CPU
+        memory: "128Mi"  # 128 MB RAM
+
+# it can extent upto this limit not more then that. 
