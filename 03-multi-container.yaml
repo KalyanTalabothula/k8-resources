@@ -12,3 +12,6 @@ spec:
   - name: almalinux
     image: almalinux:9 
     command: [ "sleep", "1000" ]
+
+# nginx image anukondi, adhi yenti nginx -d deamon off anedhi continues running lo untundhi, like infinate times.
+# 
