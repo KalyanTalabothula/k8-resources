@@ -13,4 +13,4 @@ spec:
             name: pod-Config # This is my 08-config-map.yaml lo metadata name, line number: 4 
 
 # Appud ee Pod emi chestumdhi, ee configMapRef chesi, andhulo unde key value pairs mottani dhani ENV lo loki Add cheskumtumdhi..
-
+# Future lo changes jarigite akkada config-map lo changes chestam, Pod ni restart chestam. Main code ni touch cheyamu. 
