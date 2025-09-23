@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: pod
+metadata:
+  name: labels
+  labels:     # ela labels lo chala rayachhu, manaki filtering lo use avutmdhi..
+    project: roboshop
+    component: mysql
+    tier: backend
+    environment: dev
+  annotations:    # this is also key: value pairs 
+    descriptions: "This pod is created to demonstrate pod annotations"
+    jenkins: "https://jenkins.com/build/job/roboshop-catalogue/3"
+    contact: "team@example.com"
+    git-commit-hash: "a1b2c3d"
+spec:
+  container: 
+  - name: nginx
+    image: nginx
