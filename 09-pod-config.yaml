@@ -1,0 +1,16 @@
+# 🔍 kubernetes pod env 
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: env-configmap
+spec:
+  containers:
+    - name: nginx
+      image: nginx
+      envFrom:
+        - configMapRef:
+            name: pod-Config # This is my 08-config-map.yaml lo metadata name, line number: 4 
+
+# Appud ee Pod emi chestumdhi, ee configMapRef chesi, andhulo unde key value pairs mottani dhani ENV lo loki Add cheskumtumdhi..
+
