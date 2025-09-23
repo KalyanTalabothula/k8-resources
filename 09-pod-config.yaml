@@ -14,3 +14,4 @@ spec:
 
 # Appud ee Pod emi chestumdhi, ee configMapRef chesi, andhulo unde key value pairs mottani dhani ENV lo loki Add cheskumtumdhi..
 # Future lo changes jarigite akkada config-map lo changes chestam, Pod ni restart chestam. Main code ni touch cheyamu. 
+# Emergeny change anukodi example oka space issue anukondii, appudu Emergeny change request apply chesukoni permission tisukoni oka chinna change cheste inka appliaction UP ipotumdhi ani cheppi, change chesesi restart kodatam, appudu inka build process ni follow avasaram ledu, ade miru code lopala padite appudu chala problem. 
