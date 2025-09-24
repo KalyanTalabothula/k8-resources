@@ -5,6 +5,10 @@ metadata:
   labels:
     purpose: service-demo
 spec:
+  selector:
+    purpose: service-demo
+    project: roboshop
+    environment: dev
 
 
 
@@ -14,12 +18,16 @@ kind: Pod
 metadata:
   name: nginx
   labels: 
-    purpose: demo
+    purpose: service-demo
+    project: roboshop
+    environment: dev
 spec:
   containers:
   - name: nginx
     image: nginx
 
 # ekkda pod labels yemi ite echharoo aa labels Seletor lo evvali. yenni yekkuva este anta better, yenduku ante oka uniqueness anedi create avutumdhii.
+
+# Eppudu ee service nenu create chesinappudu, ee sercive yemi chestumdhi ante, ee label tho yemi yemi pods unnayo vati annittini ee service kindaki techhesukuntumdhi. 
 
 # Thats the reason we called labels as a selector ani.. 
