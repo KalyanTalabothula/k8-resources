@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  labels:
+    purpose: service-demo
+spec:
+
+
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels: 
+    purpose: demo
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+
+# ekkda pod labels yemi ite echharoo aa labels Seletor lo evvali. yenni yekkuva este anta better, yenduku ante oka uniqueness anedi create avutumdhii.
+
+# Thats the reason we called labels as a selector ani.. 
