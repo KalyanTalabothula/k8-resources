@@ -1,0 +1,32 @@
+# 🔍 kubernetes service
+apiVersion: v1
+kind: Service # resource type
+metadata:
+  name: nginx-nodeport # POD name 
+  labels:
+    purpose: service-nodeport-demo
+spec:
+  type: Nodeport # <--- 
+  selector:
+    purpose: service-nodeport-demo
+    project: roboshop
+    environment: dev
+  ports:
+    - protocol: TCP
+      port: 80 # service port
+      targetPort: 80 # container port 
+
+
+---
+apiVersion: v1
+kind: Pod # resource type
+metadata:
+  name: nginx-nodeport # POD name 
+  labels: 
+    purpose: service-nodeport-demo
+    project: roboshop
+    environment: dev
+spec:
+  containers:
+  - name: nginx
+    image: nginx
