@@ -10,7 +10,7 @@ metadata:
     project: roboshop
     app: nginx
 spec:
-  replicas: 3 # <-- s letter. and mention hoe many you same pods needs to be created Number
+  replicas: 2   # <-- s letter. and mention hoe many you same pods needs to be created Number
   # These are the labels ReplicaSet use to create pod replicas, this should match pod labels. 
   selector:
     matchLabels:    # <---
