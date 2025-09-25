@@ -19,7 +19,7 @@ spec:
       app: nginx
 # This is POD definition
   template: 
-    metadata:   # ekkada name anedi automatic gha adi create chestumdhi, 
+    metadata:   # Ekkada name anedi automatic gha adi create chestumdhi, Pod name + random 5 digit number or code
       labels:
         purpose: rs-demo
         project: roboshop
@@ -29,4 +29,6 @@ spec:
       - name: nginx
         image: nginx 
 
+# Eventhough you deleted/crashed the pod, WITHIN fraction of milli sec lo create chestumdhi. 
+# Replicas: 3 ante yedi yemi ina always 3 pods create cheystumdhi. 
 
