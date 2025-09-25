@@ -4,7 +4,7 @@ apiVersion: apps/v1 # <-- because it in different group, if you want to see al v
 kind: ReplicaSet
 metadata: 
   name: nginx
-  # Edi ReplicaSet labels, prati resources ki dhani OWN labels untaee. 
+  # Edi ReplicaSet Resource labels, prati resources ki dhani OWN labels untaee. 
   labels:
     purpose: rs-demo
     project: roboshop
