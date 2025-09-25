@@ -16,3 +16,9 @@ spec:
 # nginx image anukondi, adhi yenti nginx -d deamon off anedhi continues running lo untundhi, like infinate times.
 # just OS echhi run avvamate yela run avutmdhi.. thats the reason CrashLookBackOff error. 
 # CrashLokBackOff means container running lo ledu, ante start avvaleka potumdhi. Example: dockerfiles lo FROM, RUN--> Dockerfile chudu akkada CMD command ledu. only some images lo CMD untumdhi annitlo undadu CMD command. 
+# Container anedi yenti ? Infinite times running lo undali, ala Infinte time running lo unchali ante, yedo oka command dhanini running lo unchali continuous gha. Eppudu $systemctl start nginx ani kottanu ante, adi nginx ni continuous gha running lo unchhutumdhi gha.
+# I mean miru run chese command valla, mee application run avvaledu anukondi. EXAMPLE: catalogue undi miru run chestunnaru, adi run avutumdhi Agipotumdhi. ante configuration problem gha. 
+# Even miru correct gha mention chesina kuda, configuration problem valla kuda ravachhu CrashLookBackOff ani Example: shipping undi, mysql anedi running lo ledu, shipping miru start chesina kuda yemi avutmdhii adi, Miru CMD andi proper gha ney mention chesaru, mysql anedi running lo lekapovatm valla, shipping start cheste adi fail avutmdhi. 
+
+# CrashLokBackOff --> if container is not able to start you will get it this. 
+# dhaniki reason vachhesi miru CMD mention chesina cheyakapoee na, adi RUN avvatam ledu. Mention chesina kuda, configuration mistakes valla RUN aavvakapoe undachhu. 
