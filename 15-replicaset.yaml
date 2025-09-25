@@ -3,10 +3,10 @@ apiVersion: apps/v1 # <-- because it in different group, if you want to see al v
 # --> $ kubectl api-resources
 kind: ReplicaSet
 metadata: 
-  name: pod-name-nginx
+  name: nginx
   # Edi ReplicaSet labels, prati resources ki dhani OWN labels untaee. 
   labels:
-    purpose: re-demo
+    purpose: rs-demo
     project: roboshop
     app: nginx
 spec:
@@ -14,14 +14,14 @@ spec:
   # These are the labels ReplicaSet use to create pod replicas, this should match pod labels. 
   selector:
     matchLabels:    # <---
-      purpose: re-demo
+      purpose: rs-demo
       project: roboshop
       app: nginx
 # This is POD definition
   template: 
-    metadata:
+    metadata:   # ekkada name anedi automatic gha adi create chestumdhi, 
       labels:
-        purpose: re-demo
+        purpose: rs-demo
         project: roboshop
         app: nginx   
     spec:
