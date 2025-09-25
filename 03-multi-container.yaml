@@ -15,4 +15,5 @@ spec:
 
 # nginx image anukondi, adhi yenti nginx -d deamon off anedhi continues running lo untundhi, like infinate times.
 # just OS echhi run avvamate yela run avutmdhi.. thats the reason CrashLookBackOff error. 
-# CrashLokBackOff means container running lo ledu.
+# CrashLokBackOff means container running lo ledu. Example: dockerfiles lo FROM, RUN--> Dockerfile chudu akkada CMD command ledu. only some images lo CMD untumdhi annitlo undadu CMD command. 
+ 
