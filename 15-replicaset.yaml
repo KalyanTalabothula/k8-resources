@@ -1,0 +1,32 @@
+# 🔍 ReplicaSet kubernetes
+apiVersion: apps/v1 # <-- because it in different group, if you want to see al versions give 
+# --> $ kubectl api-resources
+kind: ReplicaSet
+metadata: 
+  name: pod-name-nginx
+  # Edi ReplicaSet labels, prati resources ki dhani OWN labels untaee. 
+  labels:
+    purpose: re-demo
+    project: roboshop
+    app: nginx
+spec:
+  replicas: 3 # <-- s letter. and mention hoe many you same pods needs to be created Number
+  # These are the labels ReplicaSet use to create pod replicas, this should match pod labels. 
+  selector:
+    matchLabels:    # <---
+      purpose: re-demo
+      project: roboshop
+      app: nginx
+# This is POD definition
+  template: 
+    metadata:
+      labels:
+        purpose: re-demo
+        project: roboshop
+        app: nginx   
+    spec:
+      containers:
+      - name: nginx
+        image: nginx 
+
+
