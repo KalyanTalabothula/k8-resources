@@ -34,4 +34,6 @@ spec:
 
 # Eppudu ee service nenu create chesinappudu, ee sercive yemi chestumdhi ante, ee label tho yemi yemi pods unnayo vati annittini ee service kindaki techhesukuntumdhi. 
 
+# ekkada nenu type yemi evva ledu, that means by default clusterIP --> Internal that means Intenal communication. 
+
 # Thats the reason we called labels as a selector ani.. 
