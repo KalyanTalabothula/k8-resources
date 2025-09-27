@@ -31,4 +31,5 @@ spec:
 
 # Eventhough you deleted/crashed the pod, WITHIN fraction of milli sec lo create chestumdhi. 
 # Replicas: 3 ante yedi yemi ina always 3 pods create cheystumdhi. 
+# Replicas yeppudu STATELESS vatiki use avutaii.
 
