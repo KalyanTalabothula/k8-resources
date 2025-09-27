@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment  # <-- change resource type ReplicaSet to Deployment
 metadata: 
   name: nginx
-  # Edi deployment Resource labels, prati resources ki dhani OWN labels untaee. 
+  # Edi DEPLOYMENT-Resource labels, prati resources ki dhani OWN labels untaee. 
   labels:
     purpose: deployment-demo
     project: roboshop
