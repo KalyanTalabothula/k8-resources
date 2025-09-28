@@ -1,8 +1,8 @@
 # 🔍 kubernetes service
 apiVersion: v1
-kind: Service # resource type
+kind: Service # yee rakamina resource vadutunnav, aa resources type
 metadata:
-  name: nginx-nodeport # POD name 
+  name: nginx-nodeport # aa Resources type ki oka peru 
   labels:
     purpose: service-nodeport-demo
 spec:
@@ -19,9 +19,9 @@ spec:
 
 ---
 apiVersion: v1
-kind: Pod # resource type
+kind: Pod # yee rakamina resource vadutunnav, aa resources type
 metadata:
-  name: nginx-nodeport # POD name 
+  name: nginx-nodeport # aa Resources type ki oka peru
   labels: 
     purpose: service-nodeport-demo
     project: roboshop
