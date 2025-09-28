@@ -6,7 +6,7 @@ metadata:
     purpose: Config
     env: dev
 data: 
-  COURSE: "DevOps with AWS"
+  COURSE: "DevOps with AWS" # --> " " double qutations in value, Key: "value"
   DURATION: "120+ hours"
   TRAINER: "Sir"
 
