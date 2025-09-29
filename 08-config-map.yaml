@@ -11,3 +11,7 @@ data:
   TRAINER: "Sir"
 
 # case anedi mana istam lower or UPPER anything is fine. 
+
+# 1. ConfigMapRef
+# ConfigMap = stores non-sensitive configuration (like app settings, URLs, env vars).
+# You can inject it into Pods using configMapRef.
