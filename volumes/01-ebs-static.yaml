@@ -36,6 +36,8 @@ kind: Pod
 metadata:
   name: nginx
 spec:
+  nodeSelector:
+    topology.kubernetes.io/zone: us-east-1c  # <-- change = to : symbol. 
   containers:
   - name: nginx
     image: nginx
