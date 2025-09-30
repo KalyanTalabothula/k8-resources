@@ -1,0 +1,15 @@
+# 🔎 kubernetes ebs driver install 
+#  GitHub --> Example/kubernetes --> static-provisioning --> manifest --> pv.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: ebs-static
+spec:
+  accessModes:
+  - ReadWriteOnce # 🔎 kubernetes volume --> check here, Persistant Volume in static  
+  capacity:
+    storage: 20Gi # <-- we created 20GB in AWS Console, thats why we giving 20 here.
+  csi:
+    driver: ebs.csi.aws.com
+    fsType: ext4
+    volumeHandle:                   # < -- AWS Console lo create ina 20GB di Volume ID ekkada mention cheyali. 
