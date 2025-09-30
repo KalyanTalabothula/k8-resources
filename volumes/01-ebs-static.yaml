@@ -48,3 +48,5 @@ spec:
   - name: persistent-storage
     persistentVolumeClaim:
       claimName: ebs-static  # < -- manam clear gha chepputunnam, ebs-static lo store chey ani (PVC) lo. Eee PVC velli PV lo store avutmdhi. it means EBS only. 
+
+# Kubernetes ki yemi chepputunam, Nvu ee Pod ni create chetappudu ee labels ni, line no 40 ane label ni consider cheysi, andulopala preference vachhesi andhulopla ee pod ni create cheyamani. US-EAST-1C lo yevi ite nodes unnayyo, aa Nodes lopala ee Pod ni create cheyamani chepputunam. 
