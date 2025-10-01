@@ -1,0 +1,12 @@
+# 🔎 kubernetes ebs driver install 
+#  GitHub --> Example/kubernetes --> dynamic-provisioning --> manifest --> storageclass.yaml
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: roboshop-ebs
+reclaimPolicy: Retain   # 🔎 kubernetes sc --> storageclass --> option retainPolicy: Retain 
+provisioner: ebs.csi.aws.com
+volumeBindingMode: WaitForFirstConsumer # Outside Disk will be created when Pod is getting created. 
+
+# Consumer is Obviosly POD 
+# SC (storageclass) is one time creation

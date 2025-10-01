@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ebs-dynamic
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: roboshop-ebs # <-- Disk ni create cheymani SC ki chepputnam 4GB storage ani, aa DISK peru roboshop
+  resources:
+    requests:
+      storage: 4Gi # Epppudu edi SC velli 4GB Disk ni create chesi dhaniki equal gha PV ni kuda create cheysumdhi.
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    purpose: ebs-dynamic-demo
+    project: roboshop
+spec:
+  nodeSelector:
+    topology.kubernetes.io/zone: us-east-1c  # <-- change = to : symbol. 
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:   # docker run -v host-path:container-path
+    - name: persistent-storage
+      mountPath: /usr/share/nginx/html  # <-- endulo store chey ani chepputunnam.
+  volumes:
+  - name: persistent-storage
+    persistentVolumeClaim:
+      claimName: ebs-dynamic
+
+# SC (storageclass) is one time creation, E cluster lo mottaniki ee storageclass use cheysukovachhu. naku yeppudu volume kavali ante appudu e claim anedi create chesukoni, dhanini POD lo mount chesukunte, E claim lo storageclassName mention chesi undhi kabatti disk anedi automatic gha create avutmdhi.
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ebs-claim
+  labels: 
+    purpose : roboshop
+    project: roboshop
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:
+    - name: persistent-storage
+      mountPath: /usr/share/nginx/html 
+  volumes:
+  - name: persistent-storage
+    persistentVolumeClaim:
+      claimName: ebs-claim
