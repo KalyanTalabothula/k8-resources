@@ -1,0 +1,17 @@
+# 🔎 kubernetes efs driver install 
+#  GitHub --> Example/kubernetes --> static-provisioning --> spec --> pv.yaml
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: efs-static
+spec:
+  capacity:  # capacity lo storage anedi Dummy, Urike syntax kosam pettaru. Because it is Elastic, It will grow
+    storage: 5Gi 
+  volumeMode: Filesystem
+  accessModes:  # You can change your wish ReadWritemany kuda. 
+    - ReadWriteOnce
+  storageClassName:   # This should be empty in static provisioning
+  persistentVolumeReclaimPolicy: Retain
+  csi:
+    driver: efs.csi.aws.com
+    volumeHandle:      # <--- Manam yedi ite create chesamo, adi tisukovali.
