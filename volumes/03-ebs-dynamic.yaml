@@ -33,21 +33,3 @@ spec:
 
 # SC (storageclass) is one time creation, E cluster lo mottaniki ee storageclass use cheysukovachhu. naku yeppudu volume kavali ante appudu e claim anedi create chesukoni, dhanini POD lo mount chesukunte, E claim lo storageclassName mention chesi undhi kabatti disk anedi automatic gha create avutmdhi.
 
-apiVersion: v1
-kind: Pod
-metadata:
-  name: ebs-claim
-  labels: 
-    purpose : roboshop
-    project: roboshop
-spec:
-  containers:
-  - name: nginx
-    image: nginx
-    volumeMounts:
-    - name: persistent-storage
-      mountPath: /usr/share/nginx/html 
-  volumes:
-  - name: persistent-storage
-    persistentVolumeClaim:
-      claimName: ebs-claim

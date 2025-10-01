@@ -11,12 +11,16 @@ volumeMounts:
 - name: persistent-storage
   mountPath: /usr/share/nginx/html
 
+🔹 mountPath ante
+
+Container lo oka folder outside storage tho attach chesinappudu, aa folder ni mountPath ani cheptaru.
+So, yes 👉 mountPath = container lo oka folder, but it is linked to a Kubernetes Volume (PVC → PV → Disk outside container).
 
 This means:
 Inside the nginx container, the folder /usr/share/nginx/html is not just a normal folder anymore.
 It is connected to something Kubernetes calls a Volume. 
-It doesn’t mean just a folder.
-It is actually linked to a Kubernetes Volume, which is further connected to real storage (like AWS EBS).
+
+
 
 2. Volume (volumes section)
 volumes:
