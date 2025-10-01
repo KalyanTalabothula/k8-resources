@@ -74,3 +74,10 @@ spec:
     - protocol: TCP
       port: 80 # service port
       targetPort: 80 # container port 
+
+# 2️⃣ Service provides a stable endpoint 
+
+# A Service gives your Pod a stable DNS name and IP inside the cluster.
+# Even if the Pod is recreated, restarted, or rescheduled:
+    # The Service IP/DNS doesn’t change.
+    # Traffic will still go to the Pod automatically.
