@@ -10,8 +10,20 @@ spec:
   volumeMode: Filesystem
   accessModes:  # You can change your wish ReadWritemany kuda. 
     - ReadWriteOnce
-  storageClassName:   # This should be empty in static provisioning
+  storageClassName: " "  # This should be empty in static provisioning
   persistentVolumeReclaimPolicy: Retain
   csi:
     driver: efs.csi.aws.com
     volumeHandle:      # <--- Manam yedi ite create chesamo, adi tisukovali.
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: efs-static
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: " "  # This should be empty in static provisioning
+  resources:
+    requests:
+      storage: 5Gi
