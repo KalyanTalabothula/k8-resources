@@ -14,7 +14,9 @@ volumeMounts:
 
 This means:
 Inside the nginx container, the folder /usr/share/nginx/html is not just a normal folder anymore.
-It is connected to something Kubernetes calls a Volume.
+It is connected to something Kubernetes calls a Volume. 
+It doesn’t mean just a folder.
+It is actually linked to a Kubernetes Volume, which is further connected to real storage (like AWS EBS).
 
 2. Volume (volumes section)
 volumes:
