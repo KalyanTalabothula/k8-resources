@@ -1,0 +1,15 @@
+# EBS dynamic provisioning cheddham 
+# 🔍 kubernetes statefulset --> StatefulSets
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  labels:
+    app: nginx
+spec:
+  ports:
+  - port: 80
+    name: web
+  clusterIP: None
+  selector:
+    app: nginx
