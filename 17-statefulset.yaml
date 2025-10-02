@@ -3,13 +3,68 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx
+  name: sc-headless-svc
   labels:
-    app: nginx
+    purpose: statefulset
+    project: roboshop
 spec:
   ports:
   - port: 80
     name: web
-  clusterIP: None
+  clusterIP: None  # <-- mean Edi Headless Service
   selector:
-    app: nginx
+    purpose: statefulset
+    project: roboshop
+#  Done --> this Headless Service created. Tarawata StatefulSet create cheyali. 
+# Pod okadhani okati communicate avvali ante we need to create Normal Service also, Just remove ClusterIP:none ane line tisete that's the normal Service. 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: sc-normal-svc
+  labels:
+    purpose: statefulset
+    project: roboshop
+spec:
+  ports:
+  - port: 80
+    name: web
+  selector:
+    purpose: statefulset
+    project: roboshop
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: sc-headless
+spec:
+  selector:
+    matchLabels:
+      purpose: statefulset
+      project: roboshop 
+  serviceName: "sc-headless-svc"    # <-- This should be Headless Service
+  replicas: 3 # by default is 1
+  template:
+    metadata:
+      labels:
+        purpose: statefulset
+        project: roboshop  # has to match .spec.selector.matchLabels
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        volumeMounts:
+        - name: www
+          mountPath: /usr/share/nginx/html
+# This is nothing but PVC, you can directly create here volumeClaimTemplate ani OR create separatly. 
+  volumeClaimTemplates:
+  - metadata:
+      name: www
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: "roboshop-ebs"  # <-- create cheysina StorageClass name ekkada evvali. 
+      resources:
+        requests:
+          storage: 2Gi
+
+# 1st Storageclass(SC) create cheyali--> Normal Service undali --> Headless Service undali --> PVC undali. edi anta cheste mii application kubernetes lo Stateful gha RUN avutaii. 
