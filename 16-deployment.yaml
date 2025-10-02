@@ -1,3 +1,34 @@
+# # 🔍 Deployment kubernetes
+# apiVersion: apps/v1 
+# kind: Deployment  # <-- change resource type ReplicaSet to Deployment
+# metadata: 
+#   name: nginx
+#   # Edi DEPLOYMENT-Resource labels, prati resources ki dhani OWN labels untaee. 
+#   labels:
+#     purpose: deployment-demo
+#     project: roboshop
+#     app: nginx
+# spec:
+#   replicas: 2   # <-- s letter. and mention hoe many you same pods needs to be created Number
+#   # These are the labels ReplicaSet use to create pod replicas, this should match pod labels. 
+#   selector:
+#     matchLabels:    # <---
+#       purpose: deployment-demo
+#       project: roboshop
+#       app: nginx
+# # This is POD definition
+#   template: 
+#     metadata:   # Ekkada name anedi automatic gha adi create chestumdhi, Pod name + random 5 digit number or code
+#       labels:
+#         purpose: deployment-demo
+#         project: roboshop
+#         app: nginx   
+#     spec:
+#       containers:
+#       - name: nginx
+#         image: nginx:latest
+#         # image: nginx:stable-perl
+
 # 🔍 Deployment kubernetes
 apiVersion: apps/v1 
 kind: Deployment  # <-- change resource type ReplicaSet to Deployment
@@ -9,7 +40,7 @@ metadata:
     project: roboshop
     app: nginx
 spec:
-  replicas: 2   # <-- s letter. and mention hoe many you same pods needs to be created Number
+  replicas: 3   # <-- s letter. and mention hoe many you same pods needs to be created Number
   # These are the labels ReplicaSet use to create pod replicas, this should match pod labels. 
   selector:
     matchLabels:    # <---
@@ -28,3 +59,20 @@ spec:
       - name: nginx
         image: nginx:latest
         # image: nginx:stable-perl
+---
+# 🔍 kubernetes service
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-svc
+  labels:
+    purpose: service-demo
+spec:
+  selector:
+    purpose: deployment-demo
+    project: roboshop
+    environment: nginx
+  ports:
+    - protocol: TCP
+      port: 80 # service port
+      targetPort: 80 # container port 
