@@ -1,0 +1,60 @@
+# 🔎 kubernetes efs driver install 
+#  GitHub --> Example/kubernetes --> dynamic-provisioning --> spec --> claim.yaml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: efs-dynamic
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: "efs-roboshop "  # This should be empty in static provisioning, In dynamic mandatory gha mention cheyali. 
+  resources:
+    requests:
+      storage: 5Gi
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  labels:
+    purpose: efs-dynamic-demo
+    project: roboshop
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    volumeMounts:   # docker run -v host-path:container-path
+    - name: persistent-storage
+      mountPath: /usr/share/nginx/html 
+  volumes:
+  - name: persistent-storage
+    persistentVolumeClaim:
+      claimName: efs-dynamic # < -- manam clear gha chepputunnam, ebs-static lo store chey ani (PVC) lo. Eee PVC velli PV lo store avutmdhi. it means EBS only. 
+
+# Kubernetes ki yemi chepputunam, Nvu ee Pod ni create chetappudu ee labels ni, line no 40 ane label ni consider cheysi, andulopala preference vachhesi andhulopla ee pod ni create cheyamani. US-EAST-1C lo yevi ite nodes unnayyo, aa Nodes lopala ee Pod ni create cheyamani chepputunam. 
+
+--- 
+# Eppudu nenu nginx ni chudali ante, External world lo, what should i create, bhyata nimdi nginx ni access cheyali ante, i need to create a service, what type of service either Nodeport (or) Loadbalancer
+
+# 🔍 kubernetes service
+apiVersion: v1
+kind: Service # yee rakamina resource vadutunnav, aa resources type
+metadata:
+  name: efs-dynamic # aa Resources type ki oka peru 
+  labels:
+    purpose: efs-dynamic-demo
+    project: roboshop
+spec:
+  type: LoadBalancer # <--- capital letters L,B 
+  selector:
+    purpose: efs-dynamic-demo
+    project: roboshop
+  ports:
+    - protocol: TCP
+      port: 80 # service port
+      targetPort: 80 # container port 
+
+# ✅ Final Explanation:
+
+# EBS (block storage) = AZ-specific → needs nodeSelector (or topology-aware scheduling) so Pods run where the volume exists.
+# EFS (file storage) = Region-wide (multi-AZ) → no need for nodeSelector because any Node can reach it over the network.
