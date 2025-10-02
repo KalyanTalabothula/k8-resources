@@ -62,7 +62,7 @@ spec:
       name: www
     spec:
       accessModes: [ "ReadWriteOnce" ]
-      storageClassName: "roboshop-ebs"  # <-- create cheysina StorageClass name ekkada evvali. 
+      storageClassName: "efs-roboshop"  # <-- create cheysina StorageClass name ekkada evvali. 
       resources:
         requests:
           storage: 2Gi
