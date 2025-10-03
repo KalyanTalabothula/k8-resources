@@ -1,4 +1,4 @@
-# EBS dynamic provisioning cheddham 
+# EfS dynamic provisioning cheddham 
 # 🔍 kubernetes statefulset --> StatefulSets
 apiVersion: v1
 kind: Service
