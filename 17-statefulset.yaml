@@ -3,7 +3,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: sc-headless-svc
+  name: nginx-svc-headless
   labels:
     purpose: statefulset
     project: roboshop
@@ -21,7 +21,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: sc-normal-svc
+  name: nginx-svc-normal
   labels:
     purpose: statefulset
     project: roboshop
@@ -36,13 +36,13 @@ spec:
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: sc-headless
+  name: nginx-statefulset
 spec:
   selector:
     matchLabels:
       purpose: statefulset
       project: roboshop 
-  serviceName: "sc-headless-svc"    # <-- This should be Headless Service
+  serviceName: "nginx-svc-headless"    # <-- This should be Headless Service
   replicas: 3 # by default is 1
   template:
     metadata:
