@@ -19,3 +19,5 @@ spec:
         port: 80  # --> miku response vastumdha leda port number 80 pina.. 
       initialDelaySeconds: 40  # Ekkada initial delay anedi liveness lo echhina dhani kante yekkuva evvali, that means 1st live lo ki vachhina taruwata ready avutmdhi kabatti. 
       periodSeconds: 3  # Every 3 sec ki kubernetes check chesukuntumdhi. Yemi ani, Response vastumdha (OR) Rada ani, Response rakapote Restart chestumdhi anamaat. That is called Self-Healing. 
+
+# Ready ina taruwata ney miku traffic vastumdhi, ante mee End-point velli Service daggara register avumdhi. 
