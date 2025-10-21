@@ -20,3 +20,13 @@ spec:
     ports:
     - protocol: TCP
       port: 27017
+
+# Database(DB) lo unde mongodb ki, ee Ingress rule apply avutumdhi.
+# Eee Ingress rule yemi chestumdhi ante, Only catalogue component pods nimdi matrame traffic ni 27017 pina access chestumdhi.
+# Evi andaru anta strict gha rayaru, only like Banking alanti vatiki ee Network Policy's rastaru. 
+
+# Commands:
+# $ kubectl create namespace roboshop
+# $ kubectl apply -f 20-network-policy.yaml
+# $ kubectl get networkpolicy -n roboshop
+# $ kubectl describe networkpolicy mongodb-accept-catalogue -n roboshop
