@@ -18,4 +18,4 @@ spec:
         path: /
         port: 80
       initialDelaySeconds: 40
-      periodSeconds: 3
+      periodSeconds: 3  # Every 3 sec ki kubernetes check chesukuntumdhi. Yemi ani, Response vastumdha (OR) Rada ani, Response rakapote Restart chestumdhi anamaat. That is called Self-Healing. 
