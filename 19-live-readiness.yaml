@@ -11,11 +11,11 @@ spec:
     livenessProbe:
       tcpSocket:
         port: 80 # --> means port number 80 is open indha.. leda ani. 
-      initialDelaySeconds: 30
-      periodSeconds: 10
+      initialDelaySeconds: 30  # Ekkada kubernetes wait chestumdhi 30 sec varaku application anta ready avvali gha, like start 
+      periodSeconds: 10 # --> Every 10 sec ki okkasari check chestu untumdhi. 
     readinessProbe:
       httpGet:
         path: /
         port: 80  # --> miku response vastumdha leda port number 80 pina.. 
-      initialDelaySeconds: 40
+      initialDelaySeconds: 40  # Ekkada initial delay anedi liveness lo echhina dhani kante yekkuva evvali, that means 1st live lo ki vachhina taruwata ready avutmdhi kabatti. 
       periodSeconds: 3  # Every 3 sec ki kubernetes check chesukuntumdhi. Yemi ani, Response vastumdha (OR) Rada ani, Response rakapote Restart chestumdhi anamaat. That is called Self-Healing. 
