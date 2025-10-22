@@ -168,3 +168,15 @@ cart -> catalogue
 cart -> catalogue:8080
 
 http:://catalogue-preview:8080/health --> success
+
+| Add-on                    | Purpose / What it does                                                |
+| ------------------------- | --------------------------------------------------------------------- |
+| **CoreDNS**               | Provides DNS (name → IP) inside cluster (so pods can find each other) |
+| **kube-proxy**            | Handles network routing inside the cluster                            |
+| **Dashboard**             | Web UI for Kubernetes                                                 |
+| **Metrics Server**        | Collects resource metrics (CPU, memory) for autoscaling               |
+| **Ingress Controller**    | Manages external access (like load balancer)                          |
+| **Network Add-ons (CNI)** | Provide pod-to-pod networking (e.g., Calico, Flannel, Weave)          |
+| **Storage Add-ons (CSI)** | Manage storage volumes (e.g., EBS, Ceph, NFS)                         |
+| **Monitoring tools**      | Prometheus, Grafana — monitor your cluster                            |
+| **Logging tools**         | Fluentd, Loki — collect and view logs                                 |
