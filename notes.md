@@ -76,6 +76,48 @@ apiserver → reads data from etcd
 The result (pod list) comes back to you.
 
 
+| Concept    | Terraform                         | Kubernetes                      |
+| ---------- | --------------------------------- | ------------------------------- |
+| Storage    | `.tfstate` file (local or remote) | `etcd` database                 |
+| Managed by | Terraform tool                    | kube-apiserver                  |
+| Type       | File-based JSON                   | Distributed key-value store     |
+| Usage      | Tracks cloud infra state          | Tracks cluster & workload state |
+| Backup     | Copy `.tfstate`                   | `etcdctl snapshot save`         |
+
+So yes — conceptually same idea (both store state),
+but technically different systems (file vs. database).
+
+| Component                   | Function                                                                    |
+| --------------------------- | --------------------------------------------------------------------------- |
+| **etcd**                    | Database → stores all cluster state                                         |
+| **kube-apiserver**          | Gateway → talks to etcd and other control plane parts                       |
+| **kube-controller-manager** | Ensures cluster state matches desired state (e.g., creates pods if missing) |
+| **kube-scheduler**          | Decides on which node each pod should run                                   |
+| **kubelet (on each node)**  | Runs pods and reports back to API server                                    |
+
+👉 All these components are part of the control plane,
+and they all depend on etcd to store and read data.
+
+
+📊 Flow example
+
+You create a Deployment → API Server receives it.
+API Server saves it to etcd.
+Controller Manager reads from etcd → creates ReplicaSets, Pods, etc.
+Scheduler picks which node → updates etcd.
+Kubelet runs Pod → updates status in etcd.
+Everything → saved and synced in etcd ✅
+
+| Component                   | Simple meaning    | Job                                                       |
+| --------------------------- | ----------------- | --------------------------------------------------------- |
+| **etcd**                    | Memory / Database | Stores everything about cluster (Pods, Nodes, Secrets...) |
+| **kube-apiserver**          | Receptionist      | First contact point — all communication goes through it   |
+| **kube-controller-manager** | Manager           | Watches etcd, fixes things automatically                  |
+| **kube-scheduler**          | Planner           | Decides which node runs each Pod                          |
+
+
+All these 4 together = Control Plane. ✅
+
 Node components
 =============
 kubelet --> agent running in every node. connects the nodes and master and makes sure containers are running inside pod.
