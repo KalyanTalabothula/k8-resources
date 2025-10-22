@@ -118,6 +118,42 @@ Everything → saved and synced in etcd ✅
 
 All these 4 together = Control Plane. ✅
 
+🧠 Step 2: What is the “Controller Manager”?
+
+The Controller Manager is just one part inside the control plane.
+Its job: make sure the cluster’s actual state = desired state.
+
+Example 👇
+You said “I want 3 Pods of Nginx” (in Deployment YAML).
+
+etcd stores this info.
+
+Controller Manager checks etcd:
+
+“Hmm, only 2 Pods are running, but 3 are needed.”
+
+It creates 1 more Pod to fix it.
+
+💬 So the Controller Manager reads data from etcd,
+but it doesn’t store anything itself — it just acts on data.
+
+
+
+🧠 Step 3: What is “etcd”?
+
+etcd = Database / Memory for the control plane.
+
+It doesn’t make decisions.
+It just stores everything:
+
+Pod info
+Deployment info
+ConfigMaps
+Secrets
+Node info
+
+Whenever anything changes in the cluster — it’s saved to etcd.
+
 Node components
 =============
 kubelet --> agent running in every node. connects the nodes and master and makes sure containers are running inside pod.
