@@ -25,6 +25,7 @@ etcd --> key value storage for k8 cluster. all k8 configs are here
 etcd is like Kubernetes’s brain 🧠 —
 it remembers everything about your cluster (nodes, pods, configs, secrets, etc.).
 
+
 🧩 Example to understand
 
 Imagine Kubernetes is a school 🏫:
@@ -37,6 +38,7 @@ Now… every decision, every change, every student’s detail must be recorded s
 
 That record book 📖 = etcd
 Without etcd, the school (cluster) forgets who is in which class, what subjects exist, etc.
+
 
 ⚙️ What exactly etcd stores?
 
@@ -52,7 +54,8 @@ etcd stores all the cluster state, for example:
 | Cluster info           | Roles, namespaces, networking info   |
 
 
-So if your Kubernetes cluster restarts, it uses etcd to restore the last known state (what was running, where, etc.).
+So if your Kubernetes cluster RESTARTS, it uses etcd to restore the last known state (what was running, where, etc.).
+
 
 🏗️ Where does etcd run?
 
@@ -67,10 +70,11 @@ kubectl get pods
 
 Here’s what happens:
 
+
 kubectl → talks to the kube-apiserver
 apiserver → reads data from etcd
-
 The result (pod list) comes back to you.
+
 
 Node components
 =============
