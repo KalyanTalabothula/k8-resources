@@ -11,6 +11,7 @@ scheduler --> it a component to decide where your pod should run. it checks for 
 control manager
 replica controller -> make sures desired number of pod replicas run all the time.
 node controller --> checks desired number of nodes are running
+Job controller --> A Job runs a Pod (or multiple Pods) until the work is finished successfully — then it stops.
 ServiceAccount controller --> Create default ServiceAccounts for new namespaces.
 EndpointSlice controller -> Populates EndpointSlice objects (to provide a link between Services and Pods).
 
