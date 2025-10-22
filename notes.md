@@ -163,6 +163,8 @@ Container runtime --> containerd, runc, etc. runs the containers
 
 add-ons: adds capabilities to the cluster. vpc-cni, dns, metric server, etc.
 
+Add-ons are extra tools or features that run on top of Kubernetes to make it more powerful or easier to use.They are not built-in, but they extend Kubernetes — just like apps you install on your phone 📱.
+
 cart -> catalogue
 
 cart -> catalogue:8080
@@ -180,3 +182,17 @@ http:://catalogue-preview:8080/health --> success
 | **Storage Add-ons (CSI)** | Manage storage volumes (e.g., EBS, Ceph, NFS)                         |
 | **Monitoring tools**      | Prometheus, Grafana — monitor your cluster                            |
 | **Logging tools**         | Fluentd, Loki — collect and view logs                                 |
+
+⚙️ How Add-ons work
+
+Add-ons are just regular Kubernetes resources (Pods, Deployments, Services, etc.)
+
+They usually run inside the kube-system namespace.
+
+You can install them using:
+
+kubectl apply -f <addon.yaml>
+
+helm install <addon-name>
+
+or sometimes built-in during cluster setup (like with kubeadm)
